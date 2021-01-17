@@ -30,9 +30,9 @@ public class StudentController {
     @RequestMapping(value = "/student/sign/{classid}")
     public String sign(HttpServletRequest request, @PathVariable Integer classid) {
         studentService.sign(request, classid);
-        return "sign_sucess";
+        return "sign_success";
     }
-    @RequestMapping(value = "/studnt/count")
+    @RequestMapping(value = "/student/count")
     public Score count(HttpServletRequest request){
         return studentService.score(request);
     }

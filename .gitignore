@@ -1,0 +1,5 @@
+# 项目排除路径
+/10dubbo/target/
+/13ssminterface/target/
+/33interface/target/
+/out/
