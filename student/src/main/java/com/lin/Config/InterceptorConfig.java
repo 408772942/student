@@ -19,7 +19,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new TotalInterceptor()).addPathPatterns("/**").excludePathPatterns("/login","/student/**", "/teacher/**","/login.html", "centre/**");
+        registry.addInterceptor(new TotalInterceptor()).addPathPatterns("/**").excludePathPatterns("/login","/student/**", "/teacher/**","/login.html", "/centre/**");
         registry.addInterceptor(new StudentInterceptor()).addPathPatterns("/student/*").excludePathPatterns();
         registry.addInterceptor(new TeacherInterceptor()).addPathPatterns("/teacher/*").excludePathPatterns();
         registry.addInterceptor(new CentreInterceptor()).addPathPatterns("/centre/*").excludePathPatterns();
