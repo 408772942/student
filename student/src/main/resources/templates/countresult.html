@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" xmlns:th="http:///www.thymeleaf.org">
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <title>学生成绩</title>
+</head>
+<script type="text/javascript">
+    $.ajax({
+        type: "get",
+        url:  "DB.json",
+        datatype: "json",//"xml", "html", "script", "html", "jsonp", "text".
+        success: function (data,status) {
+            document.writeln("学生：<br/>")
+            for (var x in data.student) {
+                document.writeln(data.student[x].name+data.student[x].age+"<br/>")
+            }
+        },
+        error:   function (data,status) { alert("Ajax请求Json错误");}
+    });
+</script>
+<body>
+</body>
+
+</html>

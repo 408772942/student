@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lin.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.lin.model.User">
+    <id column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    userid, username, password, position
+  </sql>
+  <select id="selectSign" parameterType="java.lang.String" resultType="java.lang.String">
+    select userid from sign where time like "${_parameter}%"
+  </select>
+  <select id="logintest" resultType="java.lang.String">
+    select position from user where userid=#{userid} and password=#{password}
+  </select>
+  <insert id="sign" parameterType="java.lang.Integer">
+    insert into sign  values (0,#{userid},#{classid},now());
+  </insert>
+  <select id="score" parameterType="Integer" resultType="com.lin.model.Score">
+    select classid,classname,score from score where stuid=#{userid}
+  </select>
+</mapper>
