@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <title>学生成绩</title>
+</head>
+
+<body>
+<div th:each="subject,subjectStat:${subject}">
+    <span th:text="${subjectStat.count}"></span>
+    <span th:text="${subject.subjectid}"></span>
+    <span th:text="${subject.subjectname}"></span>
+    <span th:text="${subject.stuid}"></span>
+    <span th:text="${subject.teacherid}"></span>
+</div>
+</body>
+</html>

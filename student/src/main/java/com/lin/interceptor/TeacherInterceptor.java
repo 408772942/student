@@ -15,7 +15,6 @@ public class TeacherInterceptor implements HandlerInterceptor {
         if (position == null) {
             response.sendRedirect(request.getContextPath() + "/nologin");
             return false;
-
         } else if (position.equals("teacher")) {
             return true;
         } else {

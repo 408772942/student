@@ -17,9 +17,12 @@
     select position from user where userid=#{userid} and password=#{password}
   </select>
   <insert id="sign" parameterType="java.lang.Integer">
-    insert into sign  values (0,#{userid},#{classid},now());
+    insert into sign  values (0,#{userid},#{subjectid},now());
   </insert>
   <select id="score" parameterType="Integer" resultType="com.lin.model.Score">
-    select classid,classname,score from score where stuid=#{userid}
+    select * from score where stuid=#{userid}
+  </select>
+  <select id="subject" parameterType="Integer" resultType="com.lin.model.Subject">
+    select * from subject where stuid=#{userid}
   </select>
 </mapper>

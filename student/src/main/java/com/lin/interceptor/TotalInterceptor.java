@@ -11,12 +11,12 @@ public class TotalInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handle) throws Exception {
-        if (request.getSession() == null) {
-            //response.sendRedirect(request.getContextPath() + "/login");
-            request.getRequestDispatcher("/login").forward(request,response);
+        if (request.getSession().getAttribute("position") != null) {
+            response.sendRedirect("/404.html");
             return false;
         }else {
-            return true;
+            response.sendRedirect("/login");
+            return false;
         }
     }
 }
