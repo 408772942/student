@@ -7,6 +7,17 @@ import java.util.Date;
 public class Sign {
     Integer id;
 
+    public Integer getClassTime() {
+        return classTime;
+    }
+
+    public void setClassTime(Integer classTime) {
+        this.classTime = classTime;
+    }
+
+    Integer classTime;
+
+
     public Integer getId() {
         return id;
     }

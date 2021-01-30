@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+/src/main/resources/templates/score_student.html
+/src/main/resources/templates/sign_student.html
+/src/main/java/com/lin/model/Subject.java

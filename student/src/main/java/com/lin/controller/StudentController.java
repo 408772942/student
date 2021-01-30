@@ -18,6 +18,7 @@ import java.util.List;
 public class StudentController {
     @Autowired
     private StudentService studentService;
+    //登陆界面
     @RequestMapping(value = "/login",method = RequestMethod.GET)
     public ModelAndView test(HttpServletRequest request){
         if(request.getSession().getAttribute("position")!=null){
@@ -26,23 +27,32 @@ public class StudentController {
             return new ModelAndView("login.html");
         }
     }
+    //验证登陆
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     public String login(HttpServletRequest request){
         return studentService.login(request);
     }
+    //查看签到科目
+    @RequestMapping(value = "/student/sign")
+    public String signPage(HttpServletRequest request, Model model){
+        return studentService.signPage(request,model);
+    }
+    //进行签到
     @RequestMapping(value = "/student/sign/{subjectid}")
     public String sign(HttpServletRequest request, @PathVariable Integer subjectid) {
-        studentService.sign(request, subjectid);
-        return "sign_success";
+        return  studentService.sign(request, subjectid);
     }
+    //查看成绩
     @RequestMapping(value = "/student/score")
     public String  score(HttpServletRequest request,Model model){
         return studentService.score(request,model);
     }
+    //查看课程
     @RequestMapping(value = "/student/subject")
     public String subject(HttpServletRequest request,Model model){
         return studentService.subject(request,model);
     }
+
 
 
 

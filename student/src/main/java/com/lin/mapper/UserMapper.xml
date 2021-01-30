@@ -13,7 +13,7 @@
   <select id="selectSign" parameterType="java.lang.String" resultType="java.lang.String">
     select userid from sign where time like "${_parameter}%"
   </select>
-  <select id="logintest" resultType="java.lang.String">
+  <select id="login"  resultType="java.lang.String">
     select position from user where userid=#{userid} and password=#{password}
   </select>
   <insert id="sign" parameterType="java.lang.Integer">
@@ -24,5 +24,8 @@
   </select>
   <select id="subject" parameterType="Integer" resultType="com.lin.model.Subject">
     select * from subject where stuid=#{userid}
+  </select>
+  <select id="subjectSign" parameterType="Integer" resultType="com.lin.model.Subject">
+    select * from subject where stuid=#{userid} and state = 1
   </select>
 </mapper>
