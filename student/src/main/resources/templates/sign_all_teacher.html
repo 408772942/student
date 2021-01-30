@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>查看签到的学生</title>
+</head>
+<body>
+<div th:each="sign,signStat:${sign}">
+    <span th:text="${signStat.count}"></span>
+</div>
+<div th:each="student,studentStat:${student}">
+    <span th:text="${student}"></span>
+</div>
+<div th:each="sign,signStat:${sign}">
+    <span th:text="${sign.userid}"></span>
+    <span th:text="${sign.time}"></span>
+</div>
+</body>
+</html>

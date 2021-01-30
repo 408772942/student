@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <title>教师课程</title>
+</head>
+
+<body>
+<div th:each="subject,subjectStat:${subject}">
+    <a th:href="@{'/teacher/sign/'+${subject.subjectid}}" ><span th:text="${subject.subjectname}"></span></a>
+    <a th:href="@{'/teacher/sign/'+${subject.subjectid}}" ><span th:text="${subject.subjectname}+'查看课程签到学生'"></span></a>
+    <a th:href="@{'/teacher/signOpenAll}" >查看所有开启签到的课程</a>
+    <a th:href="@{'/teacher/signOffAll}" >查看所有未开启签到的课程</a>
+    <a th:href="@{'/teacher/subjectAdd/'+${subject.subjectid}}" ><span th:text="${subject.subjectname}+'添加学生'"></span></a>
+</div>
+</body>
+</html>
