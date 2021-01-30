@@ -34,4 +34,5 @@ public interface TeacherMapper {
     Score scoreAll(Integer stuid,Integer subjectid);
     void revise(Integer subjectid,Integer score,Integer stuid);
     List<Score>studentScore(Integer stuid);
+    Integer passwd(Integer userid,String password);
 }

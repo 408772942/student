@@ -52,11 +52,10 @@ public class StudentController {
     public String subject(HttpServletRequest request,Model model){
         return studentService.subject(request,model);
     }
-
-
-
-
-
-
+    //修改密码
+    @RequestMapping(value = "/student/passwd/{password}")
+    public String passwd(HttpServletRequest request,@PathVariable String password){
+        return studentService.passwd(request,password);
+    }
 
 }

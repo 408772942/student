@@ -82,7 +82,7 @@ public class TeacherService {
         return "sign_all_teacher";
     }
 
-    public String subjectAdd(HttpServletRequest request, Integer subjectid, Integer stuid) {
+    public String studentAdd(HttpServletRequest request, Integer subjectid, Integer stuid) {
         Integer userid = (Integer) request.getSession().getAttribute("userid");
         String subjectName = teacherMapper.subjectName(subjectid, userid);
         Integer subjectState = teacherMapper.subjectState(subjectid, userid);
@@ -97,7 +97,7 @@ public class TeacherService {
         }
     }
 
-    public String subjectDel(HttpServletRequest request, Integer subjectid, Integer stuid) {
+    public String studentDel(HttpServletRequest request, Integer subjectid, Integer stuid) {
         Integer userid = (Integer) request.getSession().getAttribute("userid");
         if (teacherMapper.subjectDel(subjectid, userid, stuid) == 1) {
             return "student_del_success";
@@ -109,14 +109,13 @@ public class TeacherService {
         Integer userid = (Integer) request.getSession().getAttribute("userid");
         List<Subject> stu = teacherMapper.stuId(subjectid, userid);
         List<Student> studentAll = new ArrayList<>();
-        ;
         for (Subject stuId : stu) {
             studentAll.add(teacherMapper.studentAll(stuId.getStuid()));
         }
         model.addAttribute("student", studentAll);
         return "subject_studentAll_teacher";
     }
-    public String selectStudent(HttpServletRequest request,Model model,Integer stuid){
+    public String studentSelect(Model model,Integer stuid){
         model.addAttribute("student",teacherMapper.selectStudent(stuid));
         return "select_student";
     }
@@ -142,5 +141,13 @@ public class TeacherService {
         List<Score>studentScore=teacherMapper.studentScore(stuid);
         model.addAttribute("score",studentScore);
         return "student_score_teacher";
+    }
+    public String passwd(HttpServletRequest request,String password){
+        Integer userid = (Integer) request.getSession().getAttribute("userid");
+        if(teacherMapper.passwd(userid,password)==1){
+            return "student_add_success";
+        }else{
+            return "student_add_error";
+        }
     }
 }

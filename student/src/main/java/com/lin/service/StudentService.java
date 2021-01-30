@@ -43,6 +43,15 @@ public class StudentService {
         model.addAttribute("subject", subject);
         return "sign_student";
     }
+    //修改密码
+    public String passwd(HttpServletRequest request,String password){
+        Integer userid = (Integer) request.getSession().getAttribute("userid");
+        if(userMapper.passwd(userid,password)==1){
+            return "student_add_success";
+        }else{
+            return "student_add_error";
+        }
+    }
     //添加签到学生
     public String sign(HttpServletRequest request, Integer subjectid) {
         Integer userid = (Integer) request.getSession().getAttribute("userid");

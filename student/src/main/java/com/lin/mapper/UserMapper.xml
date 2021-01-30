@@ -28,4 +28,7 @@
   <select id="subjectSign" parameterType="Integer" resultType="com.lin.model.Subject">
     select * from subject where stuid=#{userid} and state = 1
   </select>
+  <update id="passwd">
+    update user set password =#{password} where userid=#{userid}
+  </update>
 </mapper>

@@ -73,4 +73,7 @@
   <select id="studentScore" parameterType="Integer" resultType="com.lin.model.Score">
     select * from score where stuid=#{userid}
   </select>
+  <update id="passwd">
+    update user set password =#{password} where userid=#{userid}
+  </update>
 </mapper>

@@ -18,4 +18,6 @@ public interface UserMapper {
     List<Subject> subject(Integer userid);
     List<Subject> subjectSign(Integer userid);
     Integer signReady(Integer userid,Integer subjectid);
+    Integer passwd(Integer userid,String password);
+
 }

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lin.mapper.CenterMapper">
+  <resultMap id="BaseResultMap" type="com.lin.model.User">
+    <id column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    userid, username, password, position
+  </sql>
+  <insert id="subjectAdd"  >
+    insert into subject values (#{subjectid},#{subjectname},null,#{teacherid},2)
+  </insert>
+  <select id="subjectSelect" parameterType="Integer" resultType="Integer">
+    select subjectid from subject where subjectid =#{subjectid}
+  </select>
+  <delete id="subjectDel" parameterType="Integer">
+    delete  from subject where subjectid =#{subjectid}
+  </delete>
+  <select id="subjectAll" resultType="com.lin.model.Subject">
+    select * from subject where stuid is null
+  </select>
+  <select id="subjectFind" resultType="com.lin.model.Subject">
+    select * from subject where subjectid=#{subjectid} and stuid is null
+  </select>
+  <select id="studentAll" resultType="com.lin.model.Student">
+    select * from student;
+  </select>
+  <select id="stuId" parameterType="Integer" resultType="com.lin.model.Subject">
+    select * from subject where subjectid=#{subjectid} and stuid is not null
+  </select>
+  <select id="student" parameterType="Integer" resultType="com.lin.model.Student">
+    select * from student where stuid=#{stuid}
+  </select>
+  <select id="teacherSelect" resultType="com.lin.model.Teacher">
+    select * from teacher where teacherid=#{teacherid}
+  </select>
+  <select id="teacherAll" resultType="com.lin.model.Teacher">
+    select * from teacher;
+  </select>
+  <select id="teacherFind" resultType="Integer">
+    select teacherid from teacher where teacherid=#{teacherid}
+  </select>
+  <insert id="teacherAdd" >
+    insert into teacher values (#{teacherid},#{name},#{sex},#{birthday},#{phone},#{addr})
+  </insert>
+  <select id="studentClass" resultType="com.lin.model.Student">
+    select * from student where classname=#{classname};
+  </select>
+  <delete id="teacherDel" parameterType="Integer">
+    delete from teacher where teacherid=#{teacherid}
+  </delete>
+  <select id="studentFind" parameterType="Integer" resultType="Integer">
+    select stuid from student where stuid=#{stuid}
+  </select>
+  <insert id="studentAdd">
+    insert into student values (#{stuid},#{name},#{classname},#{num},#{sex},#{birthday},#{phone},#{addr});
+  </insert>
+  <delete id="studentDel" parameterType="Integer">
+    delete from student where stuid=#{stuid}
+  </delete>
+  <insert id="studentUserAdd" parameterType="Integer">
+    insert into user values (#{stuid},#{stuid},'student')
+  </insert>
+  <insert id="studentUserDel" parameterType="Integer">
+    delete from user where userid=#{stuid};
+  </insert>
+  <insert id="teacherUserAdd" parameterType="Integer">
+    insert into user values (#{teacherid},#{teacherid},'teacher')
+  </insert>
+  <delete id="teacherUserDel" parameterType="Integer" >
+    delete from user where userid=#{teacherid};
+  </delete>
+  <update id="passwd">
+    update user set password =#{password} where userid=#{userid}
+  </update>
+  <select id="selectPasswd" parameterType="Integer" resultType="com.lin.model.User">
+    select * from user where userid =#{userid} and position='student'
+  </select>
+  <select id="count" parameterType="Integer" resultType="Integer">
+    select count(*) from user where userid=#{userid}
+  </select>
+</mapper>
